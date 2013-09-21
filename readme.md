@@ -1,6 +1,6 @@
 # Implementing Laravel
 
-[Implementing Laravel (TR)](https://leanpub.com/implementinglaravel) e-kitabındaki uygulama kodları.
+[Implementing Laravel (TR)](https://leanpub.com/implementinglaravel-tr) e-kitabındaki uygulama kodları.
 
 ## Kurulum
 
