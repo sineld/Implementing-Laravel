@@ -1,10 +1,10 @@
 # Implementing Laravel
 
-The companion application code to my e-book [Implementing Laravel](https://leanpub.com/implementinglaravel).
+[Implementing Laravel (TR)](https://leanpub.com/implementinglaravel) e-kitabındaki uygulama kodları.
 
-## Setting Up
+## Kurulum
 
-See files `public/.htaccess` and `bootstrap/start`.
+`public/.htaccess` ve `bootstrap/start` dosyalarına bakınız.
 
 See `composer.json` for PSR-0 autoloading and `app/Impl` for application library.
 
