@@ -1,6 +1,6 @@
 # Implementing Laravel
 
-[Implementing Laravel (TR)](https://leanpub.com/implementinglaravel-tr) e-kitabındaki uygulama kodları.
+[Implementing Laravel (TR)](https://leanpub.com/implementinglaravel-tr) e-kitabına ait uygulama kodları.
 
 ## Kurulum
 
@@ -30,6 +30,6 @@ PSR-0 otomatik yüklemesi için ve `app/Impl` uygulama kütüphanesi için `comp
 
 ## Paketlerin Kullanımı
 
-### Bildirimler
+## Bildirimler
 
 `app/Impl/Service/Notification` altındaki dosyalara bakınız.
