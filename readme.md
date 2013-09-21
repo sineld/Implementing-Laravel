@@ -6,30 +6,30 @@
 
 `public/.htaccess` ve `bootstrap/start` dosyalarına bakınız.
 
-See `composer.json` for PSR-0 autoloading and `app/Impl` for application library.
+PSR-0 otomatik yüklemesi için ve `app/Impl` uygulama kütüphanesi için `composer.json` dosyasına bakınız.
 
-## Repository Pattern
+## Repository Numunesi
 
-See files under `app/Impl/Repo`
+`app/Impl/Repo` altındaki dosyalara bakınız.
 
-## Repository Pattern + Cache Layer
+## Repository Numunesi + Cache Layer
 
-See files under `app/Impl/Repo` and `app/Impl/Service/Cache`
+`app/Impl/Repo` ve `app/Impl/Service/Cache` altındaki dosyalara bakınız.
 
-## Validation as a Service
+## Servis Şeklinde Geçerlilik Denetimi
 
-See files under `app/Impl/Service/Valiation`.
+`app/Impl/Service/Valiation` altındaki dosyalara bakınız.
 
-## Form Processing
+## Form İşleme
 
-See files under `app/Impl/Service/Form`.
+`app/Impl/Service/Form` altındaki dosyalara bakınız.
 
-## Error Handling
+## Hataların İşlenmesi
 
-See files under `app/Impl/Exception`.
+`app/Impl/Exception` altındaki dosyalara bakınız.
 
-## Using Packages
+## Paketlerin Kullanımı
 
-### Notification
+### Bildirimler
 
-See files under `app/Impl/Service/Notification`.
+`app/Impl/Service/Notification` altındaki dosyalara bakınız.
