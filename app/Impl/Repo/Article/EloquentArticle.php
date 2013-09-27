@@ -11,7 +11,7 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
     protected $tag;
     protected $cache;
 
-    // Class expects an Eloquent model
+    // Sınıf bağımlılığı: Eloquent modeli
     public function __construct(Model $article, TagInterface $tag, CacheInterface $cache)
     {
         $this->article = $article;
@@ -20,15 +20,15 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
     }
 
     /**
-     * Retrieve article by id
-     * regardless of status
+     * Status'a kayıtsız kalarak
+     * ID'ye göre tek bir makale getirir
      *
-     * @param  int $id Article ID
-     * @return stdObject object of article information
+     * @param  int $id Makale ID
+     * @return stdObject Makale bilgisinden oluşan nesne
      */
     public function byId($id)
     {
-        // Build the cache key, unique per article slug
+        // Her makale slug'ı için, benzersiz cache key'i inşa et
         $key = md5('id.'.$id);
 
         if( $this->cache->has($key) )
@@ -36,31 +36,31 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
             return $this->cache->get($key);
         }
 
-        // Item not cached, retrieve it
+        // Öğe cache'de yoksa modeli getir
         $article = $this->article->with('status')
                             ->with('author')
                             ->with('tags')
                             ->where('id', $id)
                             ->first();
 
-        // Store in cache for next request
+        // Sonraki istekler için cache'de sakla
         $this->cache->put($key, $article);
 
         return $article;
     }
 
     /**
-     * Get paginated articles
+     * Sayfalandırılmış makaleleri getirir
      *
-     * @param int $page Number of articles per page
-     * @param int $limit Results per page
-     * @param boolean $all Show published or all
-     * @return StdClass Object with $items and $totalItems for pagination
+     * @param int $page Sayfa başına makale sayısı
+     * @param int $limit Sayfa başına sonuç
+     * @param boolean $all Yayınlanmış olanları veya tümünü görüntüle
+     * @return StdClass Sayfalama için $items ve $totalItems'den oluşan StdClass nesnesi
      */
     public function byPage($page=1, $limit=10, $all=false)
     {
-        // Build our cache item key, unique per page number,
-        // limit and if we're showing all
+        // Cache öğe keyini tag, sayfa numarası ve limit başına benzersiz oluşturuyoruz
+        // tümünü listelemiyorsak limit kullan
         $allkey = ($all) ? '.all' : '';
         $key = md5('page.'.$page.'.'.$limit.$allkey);
 
@@ -69,13 +69,13 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
             return $this->cache->get($key);
         }
 
-        // Item not cached, retrieve it
+        // Öğe cache'de yoksa modeli getir
         $query = $this->article->with('status')
                                ->with('author')
                                ->with('tags')
                                ->orderBy('created_at', 'desc');
 
-        // All posts or only published
+        // Tüm makaleler veya yalnızca yayınlanmış olanlar
         if( ! $all )
         {
             $query->where('status_id', 1);
@@ -85,7 +85,7 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
                         ->take($limit)
                         ->get();
 
-        // Store in cache for next request
+        // Sonraki istekler için cache'de sakla
         $cached = $this->cache->putPaginated(
             $page,
             $limit,
@@ -98,14 +98,14 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
     }
 
     /**
-     * Get single article by URL
+     * URL'ye göre tek bir makale getirir
      *
-     * @param string  URL slug of article
-     * @return object object of article information
+     * @param string  Makalenin URL slug'ı
+     * @return object  Makale bilgisinden oluşan nesne
      */
     public function bySlug($slug)
     {
-        // Build the cache key, unique per article slug
+        // Makale slug'ı başına benzersiz olacak şekilde cache keyini oluştur
         $key = md5('slug.'.$slug);
 
         if( $this->cache->has($key) )
@@ -113,7 +113,7 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
             return $this->cache->get($key);
         }
 
-        // Item not cached, retrieve it
+        // Öğe cache'de yoksa modeli getir
         $article = $this->article->with('status')
                             ->with('author')
                             ->with('tags')
@@ -121,7 +121,7 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
                             ->where('status_id', 1)
                             ->first();
 
-        // Store in cache for next request
+        // Sonraki istekler için cache'de sakla
         $this->cache->put($key, $article);
 
         return $article;
@@ -129,15 +129,15 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
     }
 
    /**
-     * Get articles by their tag
+     * Taglarına göre makaleleri getirir
      *
-     * @param string  URL slug of tag
-     * @param int Number of articles per page
+     * @param string  Tagın URL slug'ı
+     * @param int Sayfa başına makale sayısı
      * @return StdClass Object with $items and $totalItems for pagination
      */
     public function byTag($tag, $page=1, $limit=10)
     {
-        // Build our cache item key, unique per tag, page number and limit
+        // Cache öğe keyini tag, sayfa numarası ve limit başına benzersiz oluşturuyoruz
         $key = md5('tag.'.$tag.'.'.$page.'.'.$limit);
 
         if( $this->cache->has($key) )
@@ -145,12 +145,12 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
             return $this->cache->get($key);
         }
 
-        // Item not cached, retrieve it
+        // Öğe cache'de yoksa modeli getir
         $foundTag = $this->tag->where('slug', $tag)->first();
 
         if( !$foundTag )
         {
-            // Likely an error, return no tags
+            // Belki bir hata, böyle bir tag olmadığı döndürülebilir
             return false;
         }
 
@@ -161,7 +161,7 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
                         ->take($limit)
                         ->get();
 
-        // Store in cache for next request
+        // Sonraki istekler için cache'de sakla
         $cached = $this->cache->put(
             $page,
             $limit,
@@ -175,14 +175,14 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
     }
 
     /**
-     * Create a new Article
+     * Yeni bir makale oluştur
      *
-     * @param array  Data to create a new object
+     * @param array  Yeni bir nesne oluşturma verisi
      * @return boolean
      */
     public function create(array $data)
     {
-        // Create the article
+        // Makaleyi oluştur
         $article = $this->article->create(array(
             'user_id' => $data['user_id'],
             'status_id' => $data['status_id'],
@@ -203,9 +203,9 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
     }
 
     /**
-     * Update an existing Article
+     * Mevcut bir makaleyi güncelle
      *
-     * @param array  Data to update an Article
+     * @param array  Bir makaleyi güncelleme verisi
      * @return boolean
      */
     public function update(array $data)
@@ -225,7 +225,7 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
     }
 
     /**
-     * Sync tags for article
+     * Tagları article'larla senkronize eder
      *
      * @param \Illuminate\Database\Eloquent\Model  $article
      * @param array  $tags
@@ -233,7 +233,8 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
      */
     protected function syncTags(Model $article, array $tags)
     {
-        // Create or add tags
+        // Mevcut tagları ve oluşturulan yeni tagları
+        // elde ettikten sonra döndür
         $found = $this->tag->findOrCreate( $tags );
 
         $tagIds = array();
@@ -243,14 +244,14 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
             $tagIds[] = $tag->id;
         }
 
-        // Assign set tags to article
+        // Article'a bu tagları ata
         $article->tags()->sync($tagIds);
     }
 
     /**
-     * Get total article count
+     * Toplam makale sayısını getir
      *
-     * @return int  Total articles
+     * @return int  Toplam makale
      */
     protected function totalArticles($all = false)
     {
@@ -263,10 +264,10 @@ class EloquentArticle extends RepoAbstract implements ArticleInterface {
     }
 
     /**
-     * Get total article count per tag
+     * Tag başına toplam makale sayısını getir
      *
-     * @param  string  $tag  Tag slug
-     * @return int     Total articles per tag
+     * @param  string  $tag  Tag slug'ı
+     * @return int     Tag başına makale sayısı
      */
     protected function totalByTag($tag)
     {

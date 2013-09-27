@@ -20,14 +20,14 @@ class ArticleController extends BaseController {
     }
 
     /**
-     * List articles
+     * Article'ları listele
      * GET /admin/article
      */
     public function index()
     {
         $page = Input::get('page', 1);
 
-        // Candidate for config item
+        // Config öğesine talip ol
         $perPage = 3;
 
         $pagiData = $this->article->byPage($page, $perPage, true);
@@ -38,7 +38,7 @@ class ArticleController extends BaseController {
     }
 
     /**
-     * Show single article. We only want to show edit form
+     * Tek article görüntüle. Yalnızca düzenleme formunu görüntülemek istiyoruz
      * @param  int $id Article ID
      * @return Redirect
      */
@@ -48,7 +48,7 @@ class ArticleController extends BaseController {
     }
 
     /**
-     * Create article form
+     * Article oluşturma formu
      * GET /admin/article/create
      */
     public function create()
@@ -62,7 +62,7 @@ class ArticleController extends BaseController {
     }
 
     /**
-     * Create article form processing
+     * Article oluşturma formunu işleme
      * POST /admin/article
      */
     public function store()
@@ -71,7 +71,7 @@ class ArticleController extends BaseController {
 
         if( $this->articleform->save( $input ) )
         {
-            // Success!
+            // Başarılı!
             return Redirect::to('/admin/article')
                     ->with('status', 'success');
         } else {
@@ -84,7 +84,7 @@ class ArticleController extends BaseController {
     }
 
     /**
-     * Create article form
+     * Article düzenleme formu
      * GET /admin/article/{id}/edit
      */
     public function edit($id)
@@ -109,7 +109,7 @@ class ArticleController extends BaseController {
     }
 
     /**
-     * Create article form
+     * Article güncelleme formu
      * PUT /admin/article/{id}
      */
     public function update()
@@ -118,12 +118,12 @@ class ArticleController extends BaseController {
 
         if( $this->articleform->update( $input ) )
         {
-            // Success!
+            // Başarılı!
             return Redirect::to('admin/article')
                     ->with('status', 'success');
         } else {
 
-            // Need article ID
+            // Article ID'ye ihtiyaç var
             return Redirect::to('admin/article/'.Input::get('id').'/edit')
                     ->withInput()
                     ->withErrors( $this->articleform->errors() )

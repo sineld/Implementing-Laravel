@@ -6,21 +6,21 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	/**
-	 * The database table used by the model.
+     * Model tarafından kullanılan veritabanı tablosu.
 	 *
 	 * @var string
 	 */
 	protected $table = 'users';
 
 	/**
-	 * The attributes excluded from the model's JSON form.
+	 * Modelin JSON formundan hariç tutulacak özellikler
 	 *
 	 * @var array
 	 */
 	protected $hidden = array('password');
 
 	/**
-	 * Get the unique identifier for the user.
+	 * Kullanıcıya ait benzersiz tanımlayıcıyı getir
 	 *
 	 * @return mixed
 	 */
@@ -30,7 +30,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	/**
-	 * Get the password for the user.
+	 * Kullanıcıya ait şifreyi getir
 	 *
 	 * @return string
 	 */
@@ -40,7 +40,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	/**
-	 * Get the e-mail address where password reminders are sent.
+	 * Şifre anımsatıcıların gönderildiği e-mail adresini getir.
 	 *
 	 * @return string
 	 */

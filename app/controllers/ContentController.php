@@ -14,14 +14,14 @@ class ContentController extends BaseController {
     }
 
     /**
-     * Paginated articles
+     * Sayfalandırılmış Article'lar
      * GET /
      */
     public function home()
     {
         $page = Input::get('page', 1);
 
-        // Candidate for config item
+        // Config öğesine talip ol
         $perPage = 3;
 
         $pagiData = $this->article->byPage($page, $perPage);
@@ -32,7 +32,7 @@ class ContentController extends BaseController {
     }
 
     /**
-     * Single article
+     * Tek article
      * GET /{slug}
      */
     public function article($slug)

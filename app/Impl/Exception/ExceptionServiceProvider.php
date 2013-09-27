@@ -16,7 +16,7 @@ class ExceptionServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap the application events.
+     * Uygulamamızın istisna işleyicisini bağla.
      *
      * @return void
      */

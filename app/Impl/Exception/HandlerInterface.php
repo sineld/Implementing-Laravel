@@ -3,7 +3,7 @@
 interface HandlerInterface {
 
     /**
-     * Handle Impl Exceptions
+     * Impl İstisnalarını İşle
      *
      * @param \Impl\Exception\ImplException
      * @return void

@@ -3,7 +3,7 @@
 class Tag extends Eloquent {
 
     /**
-     * The database table used by the model.
+     * Model tarafından kullanılan veritabanı tablosu.
      *
      * @var string
      */
@@ -12,7 +12,7 @@ class Tag extends Eloquent {
 
 
     /**
-     * The attributes that are mass assignable.
+     * Mass assign edilebilecek özellikler.
      *
      * @var array
      */
@@ -22,14 +22,14 @@ class Tag extends Eloquent {
     );
 
     /**
-     * Indicates if the model should be timestamped.
+     * Model'in timestamp kullanıp kullanamayacağı.
      *
      * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Define a many-to-many relationship.
+     * Çoktan çoğa ilişki tanımla.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

@@ -3,14 +3,14 @@
 class Status extends Eloquent {
 
     /**
-     * The database table used by the model.
+     * Model tarafından kullanılan veritabanı tablosu.
      *
      * @var string
      */
     protected $table = 'statuses';
 
     /**
-     * The attributes that are mass assignable.
+     * Mass assign edilebilecek özellikler.
      *
      * @var array
      */

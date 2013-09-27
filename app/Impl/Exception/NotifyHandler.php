@@ -12,7 +12,7 @@ class NotifyHandler implements HandlerInterface {
     }
 
     /**
-     * Handle Impl Exceptions
+     * Impl İstisnalarını İşle
      *
      * @param \Impl\Exception\ImplException
      * @return void
@@ -23,8 +23,8 @@ class NotifyHandler implements HandlerInterface {
     }
 
     /**
-     * Send Exception to notifier
-     * @param  \Exception $exception Send notification of exception
+     * İstisnayı bilgilendiriciye gönder
+     * @param  \Exception $exception Gönderilecek istisna bilgilendirmesi
      * @return void
      */
     protected function sendException(\Exception $e)

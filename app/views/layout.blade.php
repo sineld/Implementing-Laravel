@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Home | Implementing Laravel Blog</title>
+    <title>Ana Sayfa | Implementing Laravel Blog</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
@@ -28,7 +28,7 @@
                 </a>
             </h1>
             <ul class="eight columns">
-                <li><a href="/">Home</a></li>
+                <li><a href="/">Ana Sayfa</a></li>
                 <li><a href="/admin">Admin</a></li>
             </ul>
         </div>

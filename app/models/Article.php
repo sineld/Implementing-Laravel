@@ -3,14 +3,14 @@
 class Article extends Eloquent {
 
     /**
-     * The database table used by the model.
+     * Model tarafından kullanılan veritabanı tablosu.
      *
      * @var string
      */
     protected $table = 'articles';
 
     /**
-     * The attributes that are mass assignable.
+     * Mass assign edilebilecek özellikler.
      *
      * @var array
      */
@@ -24,14 +24,14 @@ class Article extends Eloquent {
     );
 
     /**
-     * Indicates if the model should soft delete.
+     * Model'in yumuşak silme kullanıp kullanamayacağı.
      *
      * @var bool
      */
     protected $softDelete = true;
 
     /**
-     * Define a one-to-one relationship.
+     * Tekten teke ilişki tanımla.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -41,7 +41,7 @@ class Article extends Eloquent {
     }
 
     /**
-     * Define a one-to-one relationship.
+     * Tekten teke ilişki tanımla.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -51,7 +51,7 @@ class Article extends Eloquent {
     }
 
     /**
-     * Define a many-to-many relationship.
+     * Çoktan çoğa ilişki tanımla.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

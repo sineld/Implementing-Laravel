@@ -3,51 +3,50 @@
 interface ArticleInterface {
 
     /**
-     * Retrieve article by id
-     * regardless of status
+     * Status'a kayıtsız kalarak
+     * ID'ye göre tek bir makale getirir
      *
-     * @param  int $id Article ID
-     * @return stdObject object of article information
+     * @param  int $id Makale ID
+     * @return stdObject Makale bilgisi nesnesi
      */
     public function byId($id);
 
     /**
-     * Get paginated articles
+     * Sayfalandırılmış makaleleri getirir
      *
-     * @param int  Number of articles per page
-     * @return StdClass Object with $items and $totalItems for pagination
+     * @param int  Sayfa başına makale sayısı
+     * @return StdClass Sayfalama için $items ve $totalItems'den oluşan nesne
      */
     public function byPage($page=1, $limit=10);
 
     /**
-     * Get single article by URL
+     * URL'ye göre tek bir makale getirir
      *
-     * @param string  URL slug of article
-     * @return object object of article information
+     * @param string  Makalenin URL slug'ı
+     * @return object   Makale bilgisinden oluşan nesne
      */
     public function bySlug($slug);
 
    /**
-     * Get articles by their tag
-     *
-     * @param string  URL slug of tag
-     * @param int Number of articles per page
-     * @return StdClass Object with $items and $totalItems for pagination
+     * @param string  Tagın URL slug'ı
+     * @param int  Geçerli sayfa
+     * @param int  Sayfa başına makale sayısı
+     * @return object  Sayfalama için $items ve $totalItems'den oluşan nesne
      */
     public function byTag($tag, $page=1, $limit=10);
 
     /**
-     * Create a new Article
+     * Yeni bir makale oluşturur
      *
-     * @param array  Data to create a new object
+     * @param array  Yeni bir nesne oluşturma verisi
      * @return boolean
      */
     public function create(array $data);
 
     /**
-     * Update an existing Article
+     * Mevcut bir makaleyi günceller
      *
-     * @param array  Data to update an Article
+     * @param array  Bir makaleyi güncelleme verisi
      * @return boolean
      */
     public function update(array $data);
