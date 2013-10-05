@@ -9,7 +9,7 @@ class EloquentTag extends RepoAbstract implements TagInterface {
     protected $tag;
     protected $cache;
 
-    // Class expects an Eloquent model
+    // Sınıf bağımlılığı: Eloquent modeli
     public function __construct(Model $tag, CacheInterface $cache)
     {
         $this->tag = $tag;
@@ -17,10 +17,10 @@ class EloquentTag extends RepoAbstract implements TagInterface {
     }
 
     /**
-     * Find existing tags or create if they don't exist
+     * Mevcut tag'ları bul veya mevcut değilse oluştur
      *
-     * @param  array $tags  Array of strings, each representing a tag
-     * @return array        Array or Arrayable collection of Tag objects
+     * @param  array $tags  Değişlkenler dizisi, her biri bir tag'ı ifade eder
+     * @return array        Tag nesnesi Arrayable collection'ı dizisi
      */
     public function findOrCreate(array $tags)
     {
@@ -34,7 +34,7 @@ class EloquentTag extends RepoAbstract implements TagInterface {
             {
                 $pos = array_search($tag->tag, $tags);
 
-                // Add returned tags to array
+                // Yanıt olarak dönen tag'ları diziye ekle
                 if( $pos !== false )
                 {
                     $returnTags[] = $tag;
@@ -43,7 +43,7 @@ class EloquentTag extends RepoAbstract implements TagInterface {
             }
         }
 
-        // Add remainings tags as new
+        // Kalan tag'ları yeni olarak ekle
         foreach( $tags as $tag )
         {
             $returnTags[] = $this->tag->create(array(

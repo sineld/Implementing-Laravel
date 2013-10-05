@@ -3,22 +3,22 @@
 interface StatusInterface {
 
     /**
-     * Get all Statuses
+     * Tüm Status'ları getir
      * @return Array Arrayable collection
      */
     public function all();
 
     /**
-     * Get specific status
+     * Belirli bir  status'u getir
      * @param  int $id Status ID
-     * @return object  Status object
+     * @return object  Status nesnesi
      */
     public function byId($id);
 
     /**
-     * Get specific status
+     * Belirli bir  status'u getir
      * @param  int $id Status slug
-     * @return object  Status object
+     * @return object  Status nesnesi
      */
     public function byStatus($status);
 

@@ -12,21 +12,21 @@ abstract class AbstractLaravelValidator implements ValidableInterface {
     protected $validator;
 
     /**
-     * Validation data key => value array
+     * anahtar => değer dizisi şeklinde validation verisi
      *
      * @var Array
      */
     protected $data = array();
 
     /**
-     * Validation errors
+     * Validation hataları
      *
      * @var Array
      */
     protected $errors = array();
 
     /**
-     * Validation rules
+     * Validation kuralları
      *
      * @var Array
      */
@@ -38,7 +38,7 @@ abstract class AbstractLaravelValidator implements ValidableInterface {
     }
 
     /**
-     * Set data to validate
+     * Geçerlilik denetiminden geçirilecek veriyi ayarla
      *
      * @return \Impl\Service\Validation\AbstractLaravelValidator
      */
@@ -50,7 +50,7 @@ abstract class AbstractLaravelValidator implements ValidableInterface {
     }
 
     /**
-     * Validation passes or fails
+     * Validation geçer veya kalır
      *
      * @return Boolean
      */
@@ -68,7 +68,7 @@ abstract class AbstractLaravelValidator implements ValidableInterface {
     }
 
     /**
-     * Return errors, if any
+     * Varsa, hataları döndürür
      *
      * @return array
      */

@@ -16,10 +16,10 @@ class LaravelCache implements CacheInterface {
     }
 
     /**
-     * Retrieve data from cache
+     * Cache'den veriyi getir
      *
-     * @param string    Cache item key
-     * @return mixed    PHP data result of cache
+     * @param string    Cache öğesinin keyi
+     * @return mixed    Cache'deki PHP veri sonucu
      */
     public function get($key)
     {
@@ -27,12 +27,12 @@ class LaravelCache implements CacheInterface {
     }
 
     /**
-     * Add data to the cache
+     * Cache'e veri ekle
      *
-     * @param string    Cache item key
-     * @param mixed     The data to store
-     * @param integer   The number of minutes to store the item
-     * @return mixed    $value variable returned for convenience
+     * @param string    Cache öğesinin keyi
+     * @param mixed     Saklanacak veri
+     * @param integer   Öğenin saklanacağı dakika sayısı
+     * @return mixed    Kolaylık için döndürülen $value değişkeni
      */
     public function put($key, $value, $minutes=null)
     {
@@ -45,16 +45,16 @@ class LaravelCache implements CacheInterface {
     }
 
     /**
-     * Add data to the cache
-     * taking pagination data into account
+     * Sayfalamayı dikkate alarak
+     * cache'e veri ekle
      *
-     * @param integer   Page of the cached items
-     * @param integer   Number of results per page
-     * @param integer   Total number of possible items
-     * @param mixed     The actual items for this page
-     * @param string    Cache item key
-     * @param integer   The number of minutes to store the item
-     * @return mixed    $items variable returned for convenience
+     * @param integer   Önbelleklenmiş öğelerin sayfası
+     * @param integer   Sayfa başına sonuç sayısı
+     * @param integer   Olası öğelerin toplam sayısı
+     * @param mixed     Bu sayfadaki öğeler
+     * @param string    Cache öğesi keyi
+     * @param integer   Öğenin saklanacağı dakika sayısı
+     * @return mixed    Kolaylık için döndürülen $items değişkeni
      */
     public function putPaginated($currentPage, $perPage, $totalItems, $items, $key, $minutes=null)
     {
@@ -71,11 +71,11 @@ class LaravelCache implements CacheInterface {
     }
 
     /**
-     * Test if item exists in cache
-     * Only returns true if exists && is not expired
+     * Cache'de öğe var mı yok mu test eder
+     * Sadece, eğer varsa ve zamanı dolmamışsa döndürür
      *
-     * @param string    Cache item key
-     * @return bool     If cache item exists
+     * @param string    Cache öğesi keyi
+     * @return bool     Cache öğesinin mevcut olup olmadığı
      */
     public function has($key)
     {

@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 class NotificationServiceProvider extends ServiceProvider {
 
     /**
-     * Register the service provider.
+     * Hizmet sağlayıcıyı kayda geçir.
      *
      * @return void
      */

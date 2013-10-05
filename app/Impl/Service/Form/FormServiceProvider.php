@@ -7,7 +7,7 @@ use Impl\Service\Form\Article\ArticleFormLaravelValidator;
 class FormServiceProvider extends ServiceProvider {
 
     /**
-     * Register the binding
+     * Bağlamayı kayda geçir
      *
      * @return void
      */

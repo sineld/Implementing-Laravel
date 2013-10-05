@@ -3,10 +3,10 @@
 interface TagInterface {
 
     /**
-     * Find existing tags or create if they don't exist
+     * Mevcut tag'ları bul veya mevcut değilse oluştur
      *
-     * @param  string $tags  Array of strings, each representing a tag
-     * @return array         Array or Arrayable collection of Tag objects
+     * @param  array $tags  Değişlkenler dizisi, her biri bir tag'ı ifade eder
+     * @return array        Tag nesnesi Arrayable collection'ı dizisi
      */
     public function findOrCreate(array $tags);
 

@@ -3,7 +3,7 @@
 interface ValidableInterface {
 
     /**
-     * Add data to validation against
+     * Geçerlilik denetimi yapılacak verileri ekle
      *
      * @param array
      * @return \Impl\Service\Validation\ValidableInterface  $this
@@ -11,14 +11,14 @@ interface ValidableInterface {
     public function with(array $input);
 
     /**
-     * Test if validation passes
+     * Geçerlilik denetiminden geçip/kalındığını test et
      *
      * @return boolean
      */
     public function passes();
 
     /**
-     * Retrieve validation errors
+     * Validation hatalarını getir
      *
      * @return array
      */

@@ -5,13 +5,13 @@ use Services_Twilio;
 class SmsNotifier implements NotifierInterface {
 
     /**
-     * Recipient of notification
+     * Bilgilendirmenin alıcısı
      * @var string
      */
     protected $to;
 
     /**
-     * Sender of notification
+     * Bilgilendirmenin göndericisi
      * @var string
      */
     protected $from;
@@ -28,9 +28,9 @@ class SmsNotifier implements NotifierInterface {
     }
 
     /**
-     * Recipients of notification
-     * @param  string $to The recipient
-     * @return Impl\Service\Notification\SmsNotifier  $this  Return self for chainability
+     * Bilgilendirmenin alıcıları
+     * @param  string $to Alıcı
+     * @return Impl\Service\Notification\SmsNotifier  $this  Zincirlenebilirlik için dönder
      */
     public function to($to)
     {
@@ -40,9 +40,9 @@ class SmsNotifier implements NotifierInterface {
     }
 
     /**
-     * Sender of notification
-     * @param  string $from The sender
-     * @return Impl\Service\Notification\NotifierInterface  $this  Return self for chainability
+     * Bilgilendirmenin göndericisi
+     * @param  string $from Gönderici
+     * @return Impl\Service\Notification\NotifierInterface  $this  Zincirlenebilirlik için dönder
      */
     public function from($from)
     {

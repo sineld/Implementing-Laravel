@@ -12,7 +12,7 @@ use Illuminate\Support\ServiceProvider;
 class RepoServiceProvider extends ServiceProvider {
 
     /**
-     * Register the service provider.
+     * Yeni servis sağlayıcısını kaydet.
      *
      * @return void
      */

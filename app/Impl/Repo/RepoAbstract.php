@@ -3,9 +3,9 @@
 abstract class RepoAbstract {
 
     /**
-     * Make a string "slug-friendly" for URLs
-     * @param  string $string  Human-friendly tag
-     * @return string       Computer-friendly tag
+     * Bir değişkeni URL için "slug-friendly/slug-dostu" yap
+     * @param  string $string  İnsan-dostu tag'ı
+     * @return string       Bilgisayar-dostu tag'ı
      */
     protected function slug($string)
     {
